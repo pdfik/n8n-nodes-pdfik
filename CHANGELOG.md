@@ -1,5 +1,10 @@
 # Changelog
 
+## [0.1.2] — 2026-11-19
+
+- Republished for the n8n verification resubmission (the portal accepts a resubmission only
+  with a new npm version). No functional changes; requests send `X-PDFik-Client: n8n/0.1.2`.
+
 ## [0.1.1] — 2026-11-19
 
 - First release published from GitHub Actions with npm provenance (required for n8n
