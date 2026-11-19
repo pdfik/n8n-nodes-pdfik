@@ -1,0 +1,70 @@
+{
+  "name": "@pdfik/n8n-nodes-pdfik",
+  "version": "0.1.1",
+  "description": "n8n community node for PDFik: turn a URL/HTML or Markdown into a PDF, capture screenshots and create Factur-X e-invoices",
+  "keywords": [
+    "n8n-community-node-package",
+    "n8n",
+    "pdfik",
+    "pdf",
+    "url-to-pdf",
+    "html-to-pdf",
+    "screenshot",
+    "e-invoice",
+    "factur-x"
+  ],
+  "license": "MIT",
+  "homepage": "https://docs.pdfik.net/integrations/n8n",
+  "author": {
+    "name": "PDFik",
+    "email": "support@pdfik.net"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pdfik/n8n-nodes-pdfik.git"
+  },
+  "bugs": {
+    "url": "https://github.com/pdfik/n8n-nodes-pdfik/issues"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "build": "n8n-node build",
+    "build:watch": "tsc --watch",
+    "dev": "n8n-node dev",
+    "lint": "n8n-node lint",
+    "lint:fix": "n8n-node lint --fix",
+    "test": "jest",
+    "prepublishOnly": "npm run lint && npm run build"
+  },
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org"
+  },
+  "n8n": {
+    "n8nNodesApiVersion": 1,
+    "strict": true,
+    "credentials": [
+      "dist/credentials/PdfikApi.credentials.js"
+    ],
+    "nodes": [
+      "dist/nodes/Pdfik/Pdfik.node.js"
+    ]
+  },
+  "devDependencies": {
+    "@n8n/node-cli": "0.57.3",
+    "@types/jest": "29.5.14",
+    "@types/node": "22.15.3",
+    "jest": "29.7.0",
+    "n8n-workflow": "2.16.0",
+    "ts-jest": "29.2.5",
+    "typescript": "5.9.3"
+  },
+  "peerDependencies": {
+    "n8n-workflow": "*"
+  }
+}

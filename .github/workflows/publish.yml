@@ -1,0 +1,46 @@
+name: Publish to npm
+
+# Publishes with npm trusted publishing (OIDC) and provenance: no npm token is stored
+# in this repository. The trusted publisher for @pdfik/n8n-nodes-pdfik must name this
+# repository and this workflow file on npmjs.com.
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          registry-url: 'https://registry.npmjs.org'
+
+      # Trusted publishing needs npm 11.5.1 or newer; Node 22 ships npm 10.
+      - name: Update npm
+        run: npm install -g npm@11.6.2
+
+      - name: Check that the tag matches package.json
+        run: |
+          version="$(node -p "require('./package.json').version")"
+          if [ "v${version}" != "${GITHUB_REF_NAME}" ]; then
+            echo "Tag ${GITHUB_REF_NAME} does not match package.json version ${version}" >&2
+            exit 1
+          fi
+
+      - run: npm ci
+
+      - run: npm run lint
+
+      - run: npm test
+
+      - run: npm run build
+
+      - run: npm publish --provenance --access public

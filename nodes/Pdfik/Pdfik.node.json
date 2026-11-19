@@ -1,0 +1,18 @@
+{
+	"node": "@pdfik/n8n-nodes-pdfik.pdfik",
+	"nodeVersion": "1.0",
+	"codexVersion": "1.0",
+	"categories": ["Utility"],
+	"resources": {
+		"credentialDocumentation": [
+			{
+				"url": "https://docs.pdfik.net/integrations/n8n"
+			}
+		],
+		"primaryDocumentation": [
+			{
+				"url": "https://docs.pdfik.net/integrations/n8n"
+			}
+		]
+	}
+}
